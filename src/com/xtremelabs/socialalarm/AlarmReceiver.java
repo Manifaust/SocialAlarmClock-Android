@@ -22,6 +22,12 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     public static void setAlarm(Context context, int secondsInTheFuture) {
+        Calendar time = Calendar.getInstance();
+        time.setTimeInMillis(System.currentTimeMillis());
+        time.add(Calendar.SECOND, secondsInTheFuture);
+    }
+    
+    public static void setAlarm(Context context, Calendar specificTime) {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
@@ -29,10 +35,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         // mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
         // SystemClock.elapsedRealtime(), PERIOD, pi);
 
-        Calendar time = Calendar.getInstance();
-        time.setTimeInMillis(System.currentTimeMillis());
-        time.add(Calendar.SECOND, secondsInTheFuture);
-        manager.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
+        manager.set(AlarmManager.RTC_WAKEUP, specificTime.getTimeInMillis(), pendingIntent);
     }
 
 }
