@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.xtremelabs.socialalarm.util.FacebookUtil;
+import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
+
 public class DismissAlarmActivity extends Activity {
 
     @Override
@@ -13,7 +16,13 @@ public class DismissAlarmActivity extends Activity {
     }
 
     public void onSnoozeButtonPress(View view) {
-        finish();
+    	FacebookUtil.postAlarmMessage(DismissAlarmActivity.this, new FacebookTaskListener() {
+			
+			@Override
+			public void onComplete() {
+				finish();
+			}
+		});
     }
     
     public void onDismissButtonPress(View view) {

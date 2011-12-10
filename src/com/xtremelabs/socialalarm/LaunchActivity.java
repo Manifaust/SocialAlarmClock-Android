@@ -10,6 +10,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+
+import com.xtremelabs.socialalarm.util.FacebookUtil;
+import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
 
 public class LaunchActivity extends Activity {
     private static final String TAG = "LaunchActivity";
@@ -18,7 +23,30 @@ public class LaunchActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        findViewById(R.id.fbLoginButton).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				FacebookUtil.loginToFacebook(LaunchActivity.this, mLoginListener);
+			}
+		});
     }
+    
+    private FacebookUtil.FacebookTaskListener mLoginListener = new FacebookTaskListener() {
+		
+		@Override
+		public void onComplete() {
+			Toast.makeText(LaunchActivity.this, "Login complete - posting", Toast.LENGTH_SHORT).show();
+			FacebookUtil.postAlarmMessage(LaunchActivity.this, new FacebookTaskListener() {
+				
+				@Override
+				public void onComplete() {
+					//Just testing
+				}
+			});
+		}
+	};
     
     public void onLaunchDismissAlarmActivityButtonPress(View view) {
         startActivity(new Intent(this, DismissAlarmActivity.class));
