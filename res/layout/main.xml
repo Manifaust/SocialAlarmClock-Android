@@ -10,6 +10,12 @@
         android:layout_height="wrap_content"
         android:text="@string/fbLogin" />
 
+	<Button
+        android:id="@+id/pickRing"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick Ring" />
+
     <Button
         android:id="@+id/launch_dismiss_alarm"
         android:layout_width="wrap_content"

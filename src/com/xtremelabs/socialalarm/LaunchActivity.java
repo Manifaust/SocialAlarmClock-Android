@@ -7,6 +7,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.xtremelabs.socialalarm.util.FacebookUtil;
 import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
+import com.xtremelabs.socialalarm.util.RingUtil;
 
 public class LaunchActivity extends Activity {
 	private static final String TAG = "LaunchActivity";
@@ -29,6 +32,14 @@ public class LaunchActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				FacebookUtil.loginToFacebook(LaunchActivity.this, mLoginListener);
+			}
+		});
+
+		findViewById(R.id.pickRing).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				RingUtil.pickRing(LaunchActivity.this);
 			}
 		});
 	}
@@ -63,6 +74,21 @@ public class LaunchActivity extends Activity {
 		time.setTimeInMillis(System.currentTimeMillis());
 		time.add(Calendar.SECOND, secondsInTheFuture);
 		manager.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+		case RingUtil.RESULT_PICK_RING:
+			if(data.hasExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)){
+				RingUtil.setRingUri((Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
+			}
+			break;
+
+		default:
+			break;
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 }
