@@ -80,4 +80,15 @@ public class Config {
 
         editor.commit();
     }
+	
+	public void removeFacebookToken()
+    {
+    	final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mContext);
+        final SharedPreferences.Editor editor = settings.edit();
+        
+        editor.remove(Facebook.ACCESS_EXPIRES);
+        editor.remove(Facebook.ACCESS_TOKEN);
+        
+        editor.commit();
+    }
 }
