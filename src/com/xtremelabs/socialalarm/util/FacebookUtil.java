@@ -1,6 +1,7 @@
 package com.xtremelabs.socialalarm.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -8,10 +9,11 @@ import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
 import com.facebook.android.Facebook.DialogListener;
 import com.facebook.android.FacebookError;
+import com.xtremelabs.socialalarm.network.FacebookPostTask;
 
 public class FacebookUtil {
 
-	public static void loginToFacebook(final Activity activity) {
+	public static void loginToFacebook(final Activity activity, final FacebookLoginListener loginListener) {
 
 		final Config config = new Config(activity);
 		final Facebook facebook = new Facebook(Config.Facebook.APPLICATION_ID);
@@ -34,6 +36,7 @@ public class FacebookUtil {
 				config.setFacebookAccessToken(facebook.getAccessToken());
 
 				Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show();
+				loginListener.onComplete();
 			}
 
 			@Override
@@ -43,7 +46,24 @@ public class FacebookUtil {
 
 		if (config.getFacebookAccessExpires() == 0L && config.getFacebookAccessToken() == null) {
 			facebook.authorize(activity, Config.Facebook.PERMISSIONS, Facebook.FORCE_DIALOG_AUTH, loginDialogListener);
+		} else {
+			loginListener.onComplete();
 		}
 	}
+	
+	public static void postAlarmMessage(Context context){
+		Bundle parameters = new Bundle();
+		parameters.putString("name", "I just snoozed my alarm clock!");
+		parameters.putString("caption", "I'm a lazy sonova who will never get anywhere in life.");
+		parameters.putString("picture", "http://www.students-in-touch.com/S-I-THOME/lifestyle/wp-content/uploads/2010/09/20100908_couchpotato.jpg");
+		
+		new FacebookPostTask(context, parameters).execute((Void[]) null);
+	}
 
+	public static interface FacebookLoginListener{
+		/*
+		 * Action to perform once logged in
+		 */
+		public void onComplete();
+	}
 }
