@@ -3,6 +3,7 @@ package com.xtremelabs.socialalarm;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -40,6 +41,16 @@ public class LaunchActivity extends Activity {
 				RingUtil.pickRing(LaunchActivity.this);
 			}
 		});
+
+		final Context context = this;
+		
+		findViewById(R.id.view_alarms_button).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				startActivity(new Intent(context, AlarmListActivity.class));
+			}
+        });
 	}
 
 	private FacebookUtil.FacebookTaskListener mLoginListener = new FacebookTaskListener() {
@@ -75,23 +86,30 @@ public class LaunchActivity extends Activity {
 	        setTime.add(Calendar.DAY_OF_YEAR, 1);
 	    }
 
-	    long timeLeft = (setTime.getTimeInMillis() - currentTime.getTimeInMillis()) / (1000 * 60);
-	    Toast.makeText(this, "There's " + timeLeft + " minutes left", Toast.LENGTH_SHORT).show();
+	    long timeLeft = (setTime.getTimeInMillis() - currentTime.getTimeInMillis()) / 1000;
+	    if (timeLeft < 60) {
+	        Toast.makeText(this, "There's " + timeLeft + " seconds left", Toast.LENGTH_SHORT).show();
+	    } else {
+	        timeLeft /= 60;
+	        Toast.makeText(this, "There's " + timeLeft + " minutes left", Toast.LENGTH_SHORT).show();
+	    }
 	    
 	    AlarmReceiver.setAlarm(this, setTime);
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch (requestCode) {
-		case RingUtil.RESULT_PICK_RING:
-			if(data.hasExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)){
-				RingUtil.setRingUri((Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
-			}
-			break;
+		if (data != null) {
+			switch (requestCode) {
+			case RingUtil.RESULT_PICK_RING:
+				if (data.hasExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)) {
+					RingUtil.setRingUri(this, (Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
+				}
+				break;
 
-		default:
-			break;
+			default:
+				break;
+			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}

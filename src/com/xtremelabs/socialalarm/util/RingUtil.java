@@ -29,13 +29,18 @@ public class RingUtil {
 		activity.startActivityForResult(intent, RESULT_PICK_RING);
 	}
 	
-	public static void setRingUri(Uri ringUri){
+	public static void setRingUri(Context context, Uri ringUri){
+		Config config = new Config(context);
+		config.putRingtonePreference(ringUri);
+		
 		mRingUri = ringUri;
 	}
 
 	public static void playRing(Context context, MediaPlayer mediaPlayer) {
 		if (mRingUri == null) {
-			mRingUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+			Config config = new Config(context);
+			
+			mRingUri = config.getRingtonePreference() == null ? RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM) : config.getRingtonePreference();
 		}
 
 		try {
