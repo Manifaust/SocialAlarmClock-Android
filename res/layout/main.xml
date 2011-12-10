@@ -29,23 +29,10 @@
         android:onClick="onLaunchDismissAlarmActivityButtonPress" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/setAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set alarm in 5 sec"
+        android:text="Set an alarm"
         android:onClick="onSetAlarmButtonPress" />
-
-    <TimePicker
-        android:id="@+id/time_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Set alarm to above time"
-        android:onClick="onSetAlarmToTimePickerButtonPress" />
 
 </LinearLayout>

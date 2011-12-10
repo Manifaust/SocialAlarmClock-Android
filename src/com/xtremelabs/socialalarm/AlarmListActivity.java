@@ -1,13 +1,16 @@
 package com.xtremelabs.socialalarm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.xtremelabs.socialalarm.model.Alarm;
+import com.xtremelabs.socialalarm.util.DatabaseHelper;
 
 public class AlarmListActivity extends Activity {
     
@@ -19,21 +22,13 @@ public class AlarmListActivity extends Activity {
         
         ListView alarmListView = (ListView) findViewById(R.id.alarm_list_view);
         
-        List<Alarm> alarms = new ArrayList<Alarm>();
+        final SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
+        final SQLiteDatabase db = databaseHelper.getWritableDatabase();
         
-        alarms.add(new Alarm("1", new Time(), true));
-        alarms.add(new Alarm("2", new Time(), false));
-        alarms.add(new Alarm("3", new Time(), true));
-        alarms.add(new Alarm("4", new Time(), true));
-        alarms.add(new Alarm("5", new Time(), true));
-        alarms.add(new Alarm("6", new Time(), false));
-        alarms.add(new Alarm("7", new Time(), true));
+        List<Alarm> alarms = DatabaseHelper.getAllAlarms(db);
         
         ArrayAdapter<Alarm> alarmAdapter = new AlarmListAdapter(this, alarms); 
         
         alarmListView.setAdapter(alarmAdapter);
-        
-//        alarmAdapter.notifyDataSetChanged();       
-        
     }
 }

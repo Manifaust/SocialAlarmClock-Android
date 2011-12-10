@@ -36,7 +36,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
         // SystemClock.elapsedRealtime(), PERIOD, pi);
-
+        
         manager.set(AlarmManager.RTC_WAKEUP, specificTime.getTimeInMillis(), pendingIntent);
     }
 

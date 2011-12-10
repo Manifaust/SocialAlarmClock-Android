@@ -2,6 +2,7 @@ package com.xtremelabs.socialalarm;
 
 import java.util.List;
 
+import com.xtremelabs.socialalarm.model.Alarm;
 import com.xtremelabs.socialalarm.util.TimeFormatter;
 
 import android.app.Activity;
@@ -49,7 +50,8 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 		Alarm alarm = getItem(position);
 		
 		if (alarm != null) {
-			Time alarmTime = alarm.getTime();
+			Time alarmTime = new Time();
+			alarmTime.set( alarm.getTime() );
 			alarmView.timeLabel.setText(TimeFormatter.formatTime(alarmTime));
 			alarmView.alarmName.setText(alarm.getName());
 			alarmView.alarmEnabled.setChecked(alarm.isEnabled());

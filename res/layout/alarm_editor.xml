@@ -4,6 +4,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <EditText 
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Alarm"/>
     
+    <TimePicker
+        android:id="@+id/time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+    
+    <CheckBox 
+        android:id="@+id/enabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enabled"/>
+    
+    <Button
+        android:id="@+id/setAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set alarm to above time"
+        android:onClick="onSetAlarmToTimePickerButtonPress" />
 
 </LinearLayout>
