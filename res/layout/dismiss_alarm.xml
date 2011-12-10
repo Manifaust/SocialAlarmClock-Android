@@ -19,20 +19,39 @@
         android:layout_gravity="center_horizontal" />
 
     <Button
-        android:id="@+id/snooze"
+        android:id="@+id/snooze_5sec"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Snooze"
+        android:text="Snooze for 5 SECONDS"
         android:onClick="onSnoozeButtonPress"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal" />
 
+    <Button
+        android:id="@+id/snooze_5min"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Snooze for 5 MINUTES"
+        android:onClick="onDismissButtonPress"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
+    
+    <Button
+        android:id="@+id/snooze_15min"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Snooze for 15 MINUTES"
+        android:onClick="onDismissButtonPress"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
+    
     <Button
         android:id="@+id/dismiss"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Dismiss"
         android:onClick="onDismissButtonPress"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

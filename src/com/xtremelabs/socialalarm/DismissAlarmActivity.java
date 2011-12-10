@@ -5,14 +5,16 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.xtremelabs.socialalarm.util.FacebookUtil;
 import com.xtremelabs.socialalarm.util.RingUtil;
 import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
 
 public class DismissAlarmActivity extends Activity {
-
-	MediaPlayer mMediaPlayer;
+    private static final int ONE_MINUTE = 60;
+	
+    MediaPlayer mMediaPlayer;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,37 @@ public class DismissAlarmActivity extends Activity {
 
     public void onSnoozeButtonPress(View view) {
     	RingUtil.stopRing(mMediaPlayer);
-    	FacebookUtil.postAlarmMessage(DismissAlarmActivity.this, new FacebookTaskListener() {
-			
-			@Override
-			public void onComplete() {
-				finish();
-			}
-		});
+    	
+    	int timeSnoozed = 0;
+    	switch (view.getId()) {
+    	case R.id.snooze_5sec:
+    	    timeSnoozed = 5;
+    	    break;
+    	case R.id.snooze_5min:
+    	    timeSnoozed = 5 * ONE_MINUTE;
+    	    break;
+    	case R.id.snooze_15min:
+    	    timeSnoozed = 15 * ONE_MINUTE;
+    	    break;
+    	}
+    	
+    	if (timeSnoozed > 0) {
+    	    AlarmReceiver.setAlarm(this, timeSnoozed);
+            postSnoozeToFB(timeSnoozed);
+    	} else {
+    	    finish();
+    	}
+    }
+
+    private void postSnoozeToFB(int timeSnoozed) {
+        FacebookUtil.postAlarmMessage(DismissAlarmActivity.this, new FacebookTaskListener() {
+            @Override
+            public void onComplete() {
+                Toast.makeText(DismissAlarmActivity.this,
+                        "Everyone now knows you suck at waking up", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }, timeSnoozed);
     }
     
     public void onDismissButtonPress(View view) {

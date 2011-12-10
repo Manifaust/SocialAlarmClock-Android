@@ -1,5 +1,9 @@
 package com.xtremelabs.socialalarm;
 
+import java.util.Calendar;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +19,20 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         context.startActivity(alarmIntent);
         Log.i(TAG, "alarm went off");
+    }
+
+    public static void setAlarm(Context context, int secondsInTheFuture) {
+        AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+
+        // mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+        // SystemClock.elapsedRealtime(), PERIOD, pi);
+
+        Calendar time = Calendar.getInstance();
+        time.setTimeInMillis(System.currentTimeMillis());
+        time.add(Calendar.SECOND, secondsInTheFuture);
+        manager.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
     }
 
 }

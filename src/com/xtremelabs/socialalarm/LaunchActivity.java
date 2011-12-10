@@ -48,21 +48,7 @@ public class LaunchActivity extends Activity {
 
 	public void onSetAlarmButtonPress(View view) {
 		Log.v(TAG, "set alarm button press");
-		setAlarm(5);
-	}
-
-	private void setAlarm(int secondsInTheFuture) {
-		AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-		Intent intent = new Intent(this, AlarmReceiver.class);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-
-		// mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-		// SystemClock.elapsedRealtime(), PERIOD, pi);
-
-		Calendar time = Calendar.getInstance();
-		time.setTimeInMillis(System.currentTimeMillis());
-		time.add(Calendar.SECOND, secondsInTheFuture);
-		manager.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
+		AlarmReceiver.setAlarm(this, 5);
 	}
 
 }
