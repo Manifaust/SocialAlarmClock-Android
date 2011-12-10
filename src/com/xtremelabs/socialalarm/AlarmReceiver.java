@@ -25,6 +25,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         Calendar time = Calendar.getInstance();
         time.setTimeInMillis(System.currentTimeMillis());
         time.add(Calendar.SECOND, secondsInTheFuture);
+        
+        setAlarm(context, time);
     }
     
     public static void setAlarm(Context context, Calendar specificTime) {
