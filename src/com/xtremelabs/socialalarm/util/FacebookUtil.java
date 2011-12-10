@@ -51,14 +51,14 @@ public class FacebookUtil {
 		}
 	}
 	
-	public static void postAlarmMessage(Context context, FacebookTaskListener fbTaskListener){
+	public static void postAlarmMessage(Context context, FacebookTaskListener fbTaskListener, int secondsSnoozed) {
 		final Config config = new Config(context);
 		
 		if (config.getFacebookAccessExpires() == 0L && config.getFacebookAccessToken() == null) {
 			Toast.makeText(context, "Login to FB so we can ridicule you!", Toast.LENGTH_SHORT).show();
 		} else {
 			Bundle parameters = new Bundle();
-			parameters.putString("name", "I just snoozed my alarm clock!");
+			parameters.putString("name", "I just snoozed my alarm clock for " + secondsSnoozed + " seconds!");
 			parameters.putString("caption", "I'm a lazy sonova who will never get anywhere in life.");
 			parameters.putString("picture", "http://www.students-in-touch.com/S-I-THOME/lifestyle/wp-content/uploads/2010/09/20100908_couchpotato.jpg");
 			
