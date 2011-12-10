@@ -10,10 +10,17 @@
         android:text="@string/hello" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/launch_dismiss_alarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Launch DismissAlarmActivity"
         android:onClick="onLaunchDismissAlarmActivityButtonPress" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set alarm in 5 sec"
+        android:onClick="onSetAlarmButtonPress" />
 
 </LinearLayout>
