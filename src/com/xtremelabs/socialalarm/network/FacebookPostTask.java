@@ -13,16 +13,19 @@ import android.widget.Toast;
 import com.facebook.android.Facebook;
 import com.xtremelabs.socialalarm.R;
 import com.xtremelabs.socialalarm.util.Config;
+import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
 
 public class FacebookPostTask extends AsyncTask<Void, Void, String> {
 
 	private ProgressDialog mProgressDialog;
 	private Context mContext;
 	private Bundle mParameters;
+	private FacebookTaskListener mFBTaskListener;
 
-	public FacebookPostTask(Context context, Bundle parameters) {
+	public FacebookPostTask(Context context, Bundle parameters, FacebookTaskListener fbTaskListener) {
 		mContext = context;
 		mParameters = parameters;
+		mFBTaskListener = fbTaskListener;
 
 		mProgressDialog = new ProgressDialog(context);
 		mProgressDialog.setMessage(context.getString(R.string.posting));
@@ -61,6 +64,7 @@ public class FacebookPostTask extends AsyncTask<Void, Void, String> {
 	protected void onPostExecute(String result) {
 		mProgressDialog.dismiss();
 		Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
+		mFBTaskListener.onComplete();
 		
 		super.onPostExecute(result);
 	}

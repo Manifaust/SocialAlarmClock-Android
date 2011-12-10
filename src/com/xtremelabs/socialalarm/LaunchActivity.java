@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.xtremelabs.socialalarm.util.FacebookUtil;
-import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookLoginListener;
+import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
 
 public class LaunchActivity extends Activity {
     private static final String TAG = "LaunchActivity";
@@ -33,12 +33,18 @@ public class LaunchActivity extends Activity {
 		});
     }
     
-    private FacebookUtil.FacebookLoginListener mLoginListener = new FacebookLoginListener() {
+    private FacebookUtil.FacebookTaskListener mLoginListener = new FacebookTaskListener() {
 		
 		@Override
 		public void onComplete() {
 			Toast.makeText(LaunchActivity.this, "Login complete - posting", Toast.LENGTH_SHORT).show();
-			FacebookUtil.postAlarmMessage(LaunchActivity.this);
+			FacebookUtil.postAlarmMessage(LaunchActivity.this, new FacebookTaskListener() {
+				
+				@Override
+				public void onComplete() {
+					//Just testing
+				}
+			});
 		}
 	};
     
