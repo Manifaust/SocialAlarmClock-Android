@@ -4,4 +4,6 @@
     <string name="hello">Hello World, LaunchActivity!</string>
     <string name="app_name">Social Alarm Clock</string>
 
+	<string name="fbLogin">Facebook Login</string>
+
 </resources>
