@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="DismissAlarmActivity"></activity>
+        <receiver android:name="AlarmReceiver"></receiver>
     </application>
 
 </manifest>

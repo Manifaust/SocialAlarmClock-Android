@@ -2,15 +2,21 @@ package com.xtremelabs.socialalarm;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 public class DismissAlarmActivity extends Activity {
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    
-        // TODO Auto-generated method stub
+        setContentView(R.layout.dismiss_alarm);
     }
 
+    public void onSnoozeButtonPress(View view) {
+        finish();
+    }
+    
+    public void onDismissButtonPress(View view) {
+        finish();
+    }
 }
