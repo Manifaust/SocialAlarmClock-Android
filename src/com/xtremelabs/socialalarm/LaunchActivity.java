@@ -17,58 +17,52 @@ import com.xtremelabs.socialalarm.util.FacebookUtil;
 import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
 
 public class LaunchActivity extends Activity {
-    private static final String TAG = "LaunchActivity";
-    
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        
-        findViewById(R.id.fbLoginButton).setOnClickListener(new OnClickListener() {
-			
+	private static final String TAG = "LaunchActivity";
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		findViewById(R.id.fbLoginButton).setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				FacebookUtil.loginToFacebook(LaunchActivity.this, mLoginListener);
 			}
 		});
-    }
-    
-    private FacebookUtil.FacebookTaskListener mLoginListener = new FacebookTaskListener() {
-		
+	}
+
+	private FacebookUtil.FacebookTaskListener mLoginListener = new FacebookTaskListener() {
+
 		@Override
 		public void onComplete() {
 			Toast.makeText(LaunchActivity.this, "Login complete - posting", Toast.LENGTH_SHORT).show();
-			FacebookUtil.postAlarmMessage(LaunchActivity.this, new FacebookTaskListener() {
-				
-				@Override
-				public void onComplete() {
-					//Just testing
-				}
-			});
+			// Next screen
 		}
 	};
-    
-    public void onLaunchDismissAlarmActivityButtonPress(View view) {
-        startActivity(new Intent(this, DismissAlarmActivity.class));
-    }
-    
-    public void onSetAlarmButtonPress(View view) {
-        Log.v(TAG, "set alarm button press");
-        setAlarm(5);
-    }
 
-    private void setAlarm(int secondsInTheFuture) {
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+	public void onLaunchDismissAlarmActivityButtonPress(View view) {
+		startActivity(new Intent(this, DismissAlarmActivity.class));
+	}
 
-//        mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), PERIOD, pi);
+	public void onSetAlarmButtonPress(View view) {
+		Log.v(TAG, "set alarm button press");
+		setAlarm(5);
+	}
 
-        Calendar time = Calendar.getInstance();
-        time.setTimeInMillis(System.currentTimeMillis());
-        time.add(Calendar.SECOND, secondsInTheFuture);
-        manager.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
-    }
-    
-    
+	private void setAlarm(int secondsInTheFuture) {
+		AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		Intent intent = new Intent(this, AlarmReceiver.class);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+		// mgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+		// SystemClock.elapsedRealtime(), PERIOD, pi);
+
+		Calendar time = Calendar.getInstance();
+		time.setTimeInMillis(System.currentTimeMillis());
+		time.add(Calendar.SECOND, secondsInTheFuture);
+		manager.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
+	}
+
 }
