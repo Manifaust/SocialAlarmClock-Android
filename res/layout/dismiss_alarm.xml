@@ -4,18 +4,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button1"
+    <AnalogClock
+        android:id="@+id/analogClock1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Snooze"
-        android:onClick="onSnoozeButtonPress" />
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp" />
+
+    <DigitalClock
+        android:id="@+id/digitalClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DigitalClock"
+        android:layout_gravity="center_horizontal" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/snooze"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Snooze"
+        android:onClick="onSnoozeButtonPress"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/dismiss"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Dismiss"
-        android:onClick="onDismissButtonPress" />
+        android:onClick="onDismissButtonPress"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
