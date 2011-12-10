@@ -2,9 +2,12 @@ package com.xtremelabs.socialalarm.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 
 public class Config {
+	
+	private static final String RING_TONE = "ring_tone";
 	
 	private Context mContext;
 	
@@ -91,4 +94,18 @@ public class Config {
         
         editor.commit();
     }
+	
+	public void putRingtonePreference(Uri ringTone){
+		putStringPreference(RING_TONE, ringTone.toString());
+	}
+	
+	public Uri getRingtonePreference(){
+		String uriString = getStringPreference(RING_TONE, null);
+		
+		if(uriString != null){
+			return Uri.parse(uriString);
+		} else {
+			return null;
+		}
+	}
 }

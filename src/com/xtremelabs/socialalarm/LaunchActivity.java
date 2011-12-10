@@ -1,6 +1,7 @@
 package com.xtremelabs.socialalarm;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -73,7 +74,7 @@ public class LaunchActivity extends Activity {
 			switch (requestCode) {
 			case RingUtil.RESULT_PICK_RING:
 				if (data.hasExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)) {
-					RingUtil.setRingUri((Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
+					RingUtil.setRingUri(this, (Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
 				}
 				break;
 
