@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, LaunchActivity!</string>
+    <string name="hello">Snoozey!</string>
     <string name="app_name">Social Alarm Clock</string>
-
+    <string name="view_alarms">View Alarms</string>
 	<string name="fbLogin">Login to Facebook</string>
 	<string name="posting">Posting...</string>
-
 </resources>

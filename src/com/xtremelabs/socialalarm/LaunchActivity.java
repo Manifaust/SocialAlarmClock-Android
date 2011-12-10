@@ -37,6 +37,16 @@ public class LaunchActivity extends Activity {
 				RingUtil.pickRing(LaunchActivity.this);
 			}
 		});
+
+		final Context context = this;
+		
+		findViewById(R.id.view_alarms_button).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				startActivity(new Intent(context, AlarmListActivity.class));
+			}
+        });
 	}
 
 	private FacebookUtil.FacebookTaskListener mLoginListener = new FacebookTaskListener() {
