@@ -1,4 +1,4 @@
-package com.xtremelabs.socialalarm;
+package com.xtremelabs.socialalarm.adapter;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.xtremelabs.socialalarm.R;
 import com.xtremelabs.socialalarm.model.Alarm;
 import com.xtremelabs.socialalarm.util.TimeFormatter;
 
@@ -55,6 +56,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 			alarmView.alarmName.setText(alarm.getName());
 //			alarmView.alarmEnabled.setChecked(alarm.isEnabled());
 		}
+		
 		return view;
 	}
 }

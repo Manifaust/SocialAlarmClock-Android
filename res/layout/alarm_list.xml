@@ -2,7 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:orientation="vertical"
    android:layout_width="fill_parent"
-   android:layout_height="fill_parent">
+   android:layout_height="fill_parent"
+   android:gravity="center_horizontal">
+   
+    <Button 
+        android:id="@+id/addAlarmButton"
+        style="@style/button"
+        android:text="@string/addAlarm"
+        android:layout_margin="10dp"/>
 	<ListView
 	    android:id="@+id/alarm_list_view"
 	    android:layout_width="fill_parent"

@@ -1,18 +1,13 @@
 package com.xtremelabs.socialalarm;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 import com.xtremelabs.socialalarm.util.FacebookUtil;
 import com.xtremelabs.socialalarm.util.FacebookUtil.FacebookTaskListener;
-import com.xtremelabs.socialalarm.util.RingUtil;
 
 public class LaunchActivity extends Activity {
 
@@ -29,57 +24,40 @@ public class LaunchActivity extends Activity {
 			}
 		});
 
-		findViewById(R.id.pickRing).setOnClickListener(new OnClickListener() {
+//		findViewById(R.id.pickRing).setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				RingUtil.pickRing(LaunchActivity.this);
+//			}
+//		});
 
-			@Override
-			public void onClick(View v) {
-				RingUtil.pickRing(LaunchActivity.this);
-			}
-		});
-
-		final Context context = this;
-		
-		findViewById(R.id.view_alarms_button).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				startActivity(new Intent(context, AlarmListActivity.class));
-			}
-        });
 	}
 
 	private FacebookUtil.FacebookTaskListener mLoginListener = new FacebookTaskListener() {
 
 		@Override
 		public void onComplete() {
-			Toast.makeText(LaunchActivity.this, "Login complete - posting", Toast.LENGTH_SHORT).show();
-			// Next screen
+			Intent intent = new Intent(LaunchActivity.this, AlarmListActivity.class);
+			startActivity(intent);
 		}
 	};
 
-	public void onLaunchDismissAlarmActivityButtonPress(View view) {
-		startActivity(new Intent(this, DismissAlarmActivity.class));
-	}
-
-	public void onSetAlarmButtonPress(View view) {
-		Intent intent = new Intent(this, AlarmEditorActivity.class);
-		startActivity(intent);
-	}
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (data != null) {
-			switch (requestCode) {
-			case RingUtil.RESULT_PICK_RING:
-				if (data.hasExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)) {
-					RingUtil.setRingUri(this, (Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
-				}
-				break;
-
-			default:
-				break;
-			}
-		}
-		super.onActivityResult(requestCode, resultCode, data);
-	}
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		if (data != null) {
+//			switch (requestCode) {
+//			case RingUtil.RESULT_PICK_RING:
+//				if (data.hasExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)) {
+//					RingUtil.setRingUri(this, (Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
+//				}
+//				break;
+//
+//			default:
+//				break;
+//			}
+//		}
+//		super.onActivityResult(requestCode, resultCode, data);
+//	}
 
 }

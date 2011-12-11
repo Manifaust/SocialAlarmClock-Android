@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="RegularText">
+	    <item name="android:layout_width">wrap_content</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textSize">16dp</item>
+	</style>
+	
+	<style name="button">
+	    <item name="android:layout_width">wrap_content</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textSize">18dp</item>
+	    <item name="android:background">@drawable/blue_button</item>
+	    <item name="android:padding">12dp</item>
+	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:textStyle">bold</item>
+	</style>
+    
+</resources>
