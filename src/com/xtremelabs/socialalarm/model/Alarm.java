@@ -68,7 +68,12 @@ public class Alarm implements Serializable{
 		return mId;
 	}
 
-	public void setId(long mId) {
+	public void setId(int mId) {
 		this.mId = mId;
+	}
+	
+	public int getIdAsInt(){
+		//probably not the best idea
+		return (int) mId;
 	}
 }

@@ -4,29 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <EditText 
-        android:id="@+id/name"
+	<TimePicker android:id="@+id/time_picker"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" />
+	    
+    <TextView
+    	android:text="@string/alarm_name"
+    	android:layout_width="100dp"
+    	android:layout_height="wrap_content"/>
+    	
+    <EditText android:id="@+id/alarm_name"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"/>
+    	
+    <!-- <Button android:id="@+id/choose_ringtone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Alarm"/>
-    
-    <TimePicker
-        android:id="@+id/time_picker"
-        android:layout_width="wrap_content"
+        android:text="@string/choose_ringtone" /> -->
+        
+    <Button android:id="@+id/delete_button"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
-    
-    <CheckBox 
-        android:id="@+id/enabled"
-        android:layout_width="wrap_content"
+        android:text="@string/delete" />
+        
+    <Button android:id="@+id/done_button"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Enabled"/>
-    
-    <Button
-        android:id="@+id/setAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Set alarm to above time"
-        android:onClick="onSetAlarmToTimePickerButtonPress" />
+        android:text="@string/done" />
 
 </LinearLayout>

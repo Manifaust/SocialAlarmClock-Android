@@ -121,4 +121,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public static synchronized void removeAlarm(final SQLiteDatabase db, final long id)
+    {
+        final String whereClause = AlarmColumns._ID + " = ?";
+        final String[] whereArgs = { String.valueOf(id) };
+
+        db.delete(MY_ALARM_TABLE, whereClause, whereArgs);
+    }
 }

@@ -5,4 +5,8 @@
     <string name="view_alarms">View Alarms</string>
 	<string name="fbLogin">Login to Facebook</string>
 	<string name="posting">Posting...</string>
+	<string name="alarm_name">Alarm Name:</string>
+	<string name="choose_ringtone">Choose Ringtone</string>
+	<string name="done">Done</string>
+	<string name="delete">Delete</string>
 </resources>

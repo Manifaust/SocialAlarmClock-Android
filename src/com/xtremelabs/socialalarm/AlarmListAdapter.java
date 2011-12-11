@@ -2,24 +2,23 @@ package com.xtremelabs.socialalarm;
 
 import java.util.List;
 
-import com.xtremelabs.socialalarm.model.Alarm;
-import com.xtremelabs.socialalarm.util.TimeFormatter;
-
 import android.app.Activity;
 import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.xtremelabs.socialalarm.model.Alarm;
+import com.xtremelabs.socialalarm.util.TimeFormatter;
 
 public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 
 	private class AlarmView {
 		public TextView timeLabel;
 		public TextView alarmName;
-		public CheckBox alarmEnabled;	
+//		public CheckBox alarmEnabled;	
 	}
 	
 	private Activity activity;
@@ -40,7 +39,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 			alarmView = new AlarmView();
 			alarmView.alarmName = (TextView) view.findViewById(R.id.alarm_name);
 			alarmView.timeLabel = (TextView) view.findViewById(R.id.time_label);
-			alarmView.alarmEnabled = (CheckBox) view.findViewById(R.id.alarm_enabled);
+//			alarmView.alarmEnabled = (CheckBox) view.findViewById(R.id.alarm_enabled);
 			
 			view.setTag(alarmView);
 		} else {
@@ -54,7 +53,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 			alarmTime.set( alarm.getTime() );
 			alarmView.timeLabel.setText(TimeFormatter.formatTime(alarmTime));
 			alarmView.alarmName.setText(alarm.getName());
-			alarmView.alarmEnabled.setChecked(alarm.isEnabled());
+//			alarmView.alarmEnabled.setChecked(alarm.isEnabled());
 		}
 		return view;
 	}
