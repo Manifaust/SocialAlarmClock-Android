@@ -2,5 +2,6 @@
 <resources>
 	<color name="transparentGreyBlue">#731b2c43</color>
 	<color name="blue">#5578b9</color>
+	<color name="darkerBlue">#385a96</color>
     
 </resources>

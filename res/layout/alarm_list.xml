@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:orientation="vertical"
-   android:layout_width="fill_parent"
-   android:layout_height="fill_parent"
-   android:gravity="center_horizontal">
-   
-    <Button 
-        android:id="@+id/addAlarmButton"
-        style="@style/button"
-        android:text="@string/addAlarm"
-        android:layout_margin="10dp"/>
-	<ListView
-	    android:id="@+id/alarm_list_view"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    />
-	<TextView
-	    android:id="@+id/android:empty"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:text="No items"/>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/darkerBlue"
+        android:orientation="horizontal" 
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/addAlarmButton"
+            style="@style/button"
+            android:layout_marginRight="5dp"
+            android:text="@string/addAlarm" />
+
+        <Button
+            android:id="@+id/choose_ringtone"
+            style="@style/button"
+            android:text="@string/choose_ringtone" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/alarm_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" />
+
+    <!--
+         <TextView
+        android:id="@+id/android:empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:text="No items" />
+    -->
+
 </LinearLayout>

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:gravity="center_horizontal">
 
     <AnalogClock
         android:id="@+id/analogClock1"
@@ -20,38 +21,33 @@
 
     <Button
         android:id="@+id/snooze_5sec"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        style="@style/button"
+        android:layout_width="230dp"
         android:text="Snooze for 5 SECONDS"
         android:onClick="onSnoozeButtonPress"
-        android:layout_margin="10dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_margin="10dp" />
 
     <Button
         android:id="@+id/snooze_5min"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        style="@style/button"
+        android:layout_width="230dp"
         android:text="Snooze for 5 MINUTES"
-        android:onClick="onDismissButtonPress"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal" />
+        android:onClick="onSnoozeButtonPress"
+        android:layout_marginBottom="10dp"/>
     
     <Button
         android:id="@+id/snooze_15min"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        style="@style/button"
+        android:layout_width="230dp"
         android:text="Snooze for 15 MINUTES"
-        android:onClick="onDismissButtonPress"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal" />
+        android:onClick="onSnoozeButtonPress"
+        android:layout_marginBottom="10dp"/>
     
     <Button
         android:id="@+id/dismiss"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Dismiss"
+        style="@style/button"
+        android:text="DISMISS"
         android:onClick="onDismissButtonPress"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

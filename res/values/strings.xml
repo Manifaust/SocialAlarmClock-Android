@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Snoozey!</string>
-    <string name="app_name">Social Alarm Clock</string>
+    <string name="app_name">Snoozy</string>
     <string name="view_alarms">View Alarms</string>
 	<string name="fbLogin">Login to Facebook</string>
 	<string name="posting">Posting...</string>
-	<string name="alarm_name">Alarm Name:</string>
-	<string name="choose_ringtone">Choose Ringtone</string>
-	<string name="done">Done</string>
+	<string name="alarm_name">Give your nuisance a name:</string>
+	<string name="choose_ringtone">Pick Blaring Noise</string>
+	<string name="done">DONE</string>
 	<string name="delete">Delete</string>
 	<string name="addAlarm">Add Alarm</string>
+	<string name="createAlarm">Create Your Snoozy</string>
 </resources>

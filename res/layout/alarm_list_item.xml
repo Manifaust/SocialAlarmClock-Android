@@ -9,12 +9,17 @@
 
     <TextView
         android:id="@+id/alarm_name"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" 
+        style="@style/RegularText"
+        android:text="Name"
+        android:textStyle="bold"
+        android:lines="1"
+        android:ellipsize="end"
         android:layout_weight="1"/>
 	<TextView
         android:id="@+id/time_label"
-        android:layout_width="100dp"
+        style="@style/RegularText"
+        android:layout_width="wrap_content"
+        android:text="Time"
         android:layout_height="match_parent"/>
     <!-- <CheckBox
         android:id="@+id/alarm_enabled"

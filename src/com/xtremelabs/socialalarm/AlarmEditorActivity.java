@@ -20,14 +20,6 @@ public class AlarmEditorActivity extends Activity {
         
         mName = (EditText) findViewById(R.id.alarm_name);
         
-//        findViewById(R.id.choose_ringtone).setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				RingUtil.pickRing(AlarmEditorActivity.this);
-//			}
-//		});
-        
         findViewById(R.id.done_button).setOnClickListener(new OnClickListener() {
 			
 			@Override

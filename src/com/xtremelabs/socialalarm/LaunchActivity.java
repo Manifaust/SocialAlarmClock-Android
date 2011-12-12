@@ -42,22 +42,4 @@ public class LaunchActivity extends Activity {
 			startActivity(intent);
 		}
 	};
-
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		if (data != null) {
-//			switch (requestCode) {
-//			case RingUtil.RESULT_PICK_RING:
-//				if (data.hasExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)) {
-//					RingUtil.setRingUri(this, (Uri) data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI));
-//				}
-//				break;
-//
-//			default:
-//				break;
-//			}
-//		}
-//		super.onActivityResult(requestCode, resultCode, data);
-//	}
-
 }
