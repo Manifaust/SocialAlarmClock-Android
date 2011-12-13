@@ -3,23 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" 
-    android:padding="10dp">
-
-    
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp">
 
     <TextView
         android:id="@+id/alarm_name"
         style="@style/RegularText"
-        android:text="Name"
+        android:text="Morning Nuisance"
         android:textStyle="bold"
         android:lines="1"
         android:ellipsize="end"
+        android:textColor="@android:color/white"
         android:layout_weight="1"/>
 	<TextView
         android:id="@+id/time_label"
         style="@style/RegularText"
         android:layout_width="wrap_content"
         android:text="Time"
+        android:textColor="@android:color/primary_text_dark_nodisable"
         android:layout_height="match_parent"/>
     <!-- <CheckBox
         android:id="@+id/alarm_enabled"

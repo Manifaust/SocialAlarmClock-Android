@@ -57,6 +57,9 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 //			alarmView.alarmEnabled.setChecked(alarm.isEnabled());
 		}
 		
+		view.setBackgroundResource(R.drawable.selection_colors);
+//		view.setBackgroundColor(Color.GRAY);
+		
 		return view;
 	}
 }

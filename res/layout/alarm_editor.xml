@@ -2,60 +2,63 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/generic_bg"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@color/darkerBlue"
         android:orientation="horizontal"
-        android:padding="10dp" 
-        android:background="@color/darkerBlue">
-        <TextView 
-            style="@style/TitleText"
-            android:text="@string/createAlarm"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="20dp" >
+        android:padding="10dp" >
 
         <TextView
-            style="@style/RegularText"
-            android:layout_gravity="left"
-            android:text="@string/alarm_name" 
-            android:layout_marginBottom="5dp"/>
-
-        <EditText
-            android:id="@+id/alarm_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Morning torture" />
-
-        <TimePicker
-            android:id="@+id/time_picker"
-            android:layout_width="match_parent"
-            android:layout_margin="20dp"
-            android:layout_height="wrap_content" />
-        
-        <!-- <DatePicker 
-            android:id="@+id/date_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/> -->
-
-        <!--
-         <Button android:id="@+id/delete_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/delete" />
-        -->
-
-        <Button
-            android:id="@+id/done_button"
-            style="@style/button"
-            android:text="@string/done" />
+            style="@style/TitleText"
+            android:text="@string/createAlarm" />
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp" >
+
+            <TextView
+                style="@style/RegularText"
+                android:layout_gravity="left"
+                android:layout_marginBottom="5dp"
+                android:text="@string/alarm_name" />
+
+            <EditText
+                android:id="@+id/alarm_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Morning Nuisance" />
+
+           <!--  <Button
+                android:id="@+id/date_button"
+                style="@style/WhiteButton"
+                android:layout_width="220dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="Today" /> -->
+            
+            <TimePicker
+                android:id="@+id/time_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp" />
+
+            <Button
+                android:id="@+id/done_button"
+                style="@style/button"
+                android:text="@string/done" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -73,4 +73,9 @@ public class DismissAlarmActivity extends Activity {
 		RingUtil.stopRing(mMediaPlayer);
 		finish();
 	}
+	
+	@Override
+	public void onBackPressed() {
+		//Can't back out
+	}
 }

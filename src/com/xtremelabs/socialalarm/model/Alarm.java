@@ -2,11 +2,10 @@ package com.xtremelabs.socialalarm.model;
 
 import java.io.Serializable;
 
-
-public class Alarm implements Serializable{
+public class Alarm implements Serializable {
 
 	private static final long serialVersionUID = -7104155458991253488L;
-	
+
 	private String mName;
 	private long mTime;
 	private boolean mEnabled;
@@ -24,7 +23,7 @@ public class Alarm implements Serializable{
 		mEnabled = enabled;
 		mId = id;
 	}
-	
+
 	public Alarm(long id, Alarm alarm) {
 		mName = alarm.getName();
 		mTime = alarm.getTime();
@@ -41,7 +40,11 @@ public class Alarm implements Serializable{
 	}
 
 	public String getName() {
-		return mName;
+		if (mName.trim().length() > 0) {
+			return mName;
+		} else{
+			return "Morning Nuisance";
+		}
 	}
 
 	public void setName(String name) {
@@ -63,7 +66,7 @@ public class Alarm implements Serializable{
 	public void setEnabled(boolean enabled) {
 		mEnabled = enabled;
 	}
-	
+
 	public long getId() {
 		return mId;
 	}
@@ -71,9 +74,9 @@ public class Alarm implements Serializable{
 	public void setId(int mId) {
 		this.mId = mId;
 	}
-	
-	public int getIdAsInt(){
-		//probably not the best idea
+
+	public int getIdAsInt() {
+		// probably not the best idea
 		return (int) mId;
 	}
 }

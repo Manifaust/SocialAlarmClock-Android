@@ -3,13 +3,31 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" 
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@drawable/snoozy_bg">
+    
+    <ImageView 
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_margin="20dp"/>
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bear"
+        android:layout_below="@id/logo"
+        android:layout_above="@+id/fbLoginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"/>
 
     <Button
         android:id="@+id/fbLoginButton"
         android:layout_alignParentBottom="true"
         style="@style/button"
         android:text="@string/fbLogin" 
+        android:layout_centerHorizontal="true"
         android:layout_margin="20dp"/>
 
 </RelativeLayout>
